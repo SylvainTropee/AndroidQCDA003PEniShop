@@ -53,4 +53,8 @@ class ArticleDaoMemoryImpl : ArticleDAO {
         article.id = articlesInMemory.size.toLong()
         return article.id
     }
+
+    override fun selectAll(): List<Article> {
+        return articlesInMemory
+    }
 }
