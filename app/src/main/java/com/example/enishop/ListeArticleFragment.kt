@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
@@ -36,11 +37,20 @@ class ListeArticleFragment : Fragment() {
 
         val articles = ArticleRepository.getAllArticles()
 
-        var content = ""
-        articles.forEach {article ->
-            content += "${article.title}\n"
+//        var content = ""
+//        articles.forEach {article ->
+//            content += "${article.title}\n"
+//        }
+//        binding.tvArticles.text = content
+
+        articles.forEach {
+            //création d'une instance de textview
+            val tv = TextView(context)
+            tv.text = it.title
+
+            //j'ajoute l'instance dans le layout à utiliser
+            binding.lytArticleList.addView(tv)
         }
-        binding.tvArticles.text = content
 
 
         binding.buttonToDetail.setOnClickListener {
