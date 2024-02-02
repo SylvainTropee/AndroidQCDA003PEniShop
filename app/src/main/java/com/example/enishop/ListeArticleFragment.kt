@@ -52,9 +52,10 @@ class ListeArticleFragment : Fragment() {
             binding.lytArticleList.addView(tv)
         }
 
-
         binding.buttonToDetail.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.actionListToDetailArticle)
+            val direction =
+                ListeArticleFragmentDirections.actionListToDetailArticle(articles.random())
+            Navigation.findNavController(view).navigate(direction)
         }
 
     }
