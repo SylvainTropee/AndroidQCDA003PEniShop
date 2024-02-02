@@ -1,11 +1,10 @@
-package com.example.enishop
+package com.example.enishop.ui.articlelist
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.enishop.databinding.FragmentListeArticleBinding

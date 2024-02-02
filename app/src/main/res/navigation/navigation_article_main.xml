@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listeArticleFragment"
-        android:name="com.example.enishop.ListeArticleFragment"
+        android:name="com.example.enishop.ui.articlelist.ListeArticleFragment"
         android:label="fragment_liste_article"
         tools:layout="@layout/fragment_liste_article" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailArticleFragment"
-        android:name="com.example.enishop.DetailArticleFragment"
+        android:name="com.example.enishop.ui.articledetail.DetailArticleFragment"
         android:label="fragment_detail_article"
         tools:layout="@layout/fragment_detail_article" >
         <argument

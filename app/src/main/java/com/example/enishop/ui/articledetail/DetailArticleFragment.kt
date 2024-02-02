@@ -1,4 +1,4 @@
-package com.example.enishop
+package com.example.enishop.ui.articledetail
 
 import android.os.Bundle
 import android.view.LayoutInflater

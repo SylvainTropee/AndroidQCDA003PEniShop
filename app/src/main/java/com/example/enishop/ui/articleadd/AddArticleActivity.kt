@@ -1,22 +1,19 @@
-package com.example.enishop
+package com.example.enishop.ui.articleadd
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.example.enishop.bo.Article
-import com.example.enishop.databinding.ActivityMainBinding
-import com.example.enishop.repository.ArticleRepository
+import com.example.enishop.databinding.ActivityAddArticleBinding
 import com.google.android.material.snackbar.Snackbar
-import java.util.Date
 
 private const val TAG = "MainActivity"
 
-lateinit var binding: ActivityMainBinding
+lateinit var binding: ActivityAddArticleBinding
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityAddArticleBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 //        val article = ArticleRepository.getArticle(2)
