@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.articleadd.MainActivity"
+            android:name=".ui.articleadd.ActivityAddArticle"
             android:exported="true">
         </activity>
     </application>

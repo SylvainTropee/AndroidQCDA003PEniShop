@@ -1,5 +1,8 @@
 package com.example.enishop.ui.articledetail
 
+import android.app.SearchManager
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -27,19 +30,23 @@ class DetailArticleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //associe l'argument passé à la variable dans la vue
         binding.article = args.article
+
+        binding.tvArticleTitle.setOnClickListener {
+            val article = binding.article
+//            Intent(Intent.ACTION_WEB_SEARCH).also {
+//                it.putExtra(SearchManager.QUERY, "eni-shop " + article?.title)
+//                startActivity(it)
+//            }
+            Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("https://www.google.com/search?q=eni-shop " + article?.title)
+            ).also {
+                startActivity(it)
+            }
+
+        }
+
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
