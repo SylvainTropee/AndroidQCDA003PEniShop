@@ -3,6 +3,7 @@ package com.example.enishop.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
 import com.example.enishop.R
 import com.example.enishop.ui.articleadd.ActivityAddArticle
 import com.google.android.material.floatingactionbutton.FloatingActionButton

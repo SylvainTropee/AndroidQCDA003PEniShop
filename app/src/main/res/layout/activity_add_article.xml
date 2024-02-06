@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="article"
-            type="com.example.enishop.bo.Article" />
+            name="vm"
+            type="com.example.enishop.ui.articleadd.AddArticleViewModel" />
         <import type="com.example.enishop.utils.DateConverter"/>
 
     </data>
@@ -45,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Titre"
-                android:text="@={article.title}"
+                android:text="@={vm.article.title}"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:ems="10"
-            android:text="@={article.description}"
+            android:text="@={vm.article.description}"
             android:hint="Description"
             android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:ems="10"
-            android:text="@={`` + article.price}"
+            android:text="@={`` + vm.article.price}"
             android:hint="Prix"
             android:inputType="numberDecimal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:ems="10"
-            android:text="@{DateConverter.dateToString(article.date)}"
+            android:text="@={vm.date}"
             android:hint="Sortie initiale"
             android:inputType="date"
             app:layout_constraintEnd_toEndOf="parent"

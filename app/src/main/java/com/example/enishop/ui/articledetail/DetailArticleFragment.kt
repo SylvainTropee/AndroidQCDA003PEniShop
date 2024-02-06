@@ -48,5 +48,4 @@ class DetailArticleFragment : Fragment() {
 
     }
 
-
 }
