@@ -1,13 +1,15 @@
 package com.example.enishop.ui.articledetail
 
-import android.app.SearchManager
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.enishop.databinding.FragmentDetailArticleBinding
 
@@ -16,6 +18,7 @@ class DetailArticleFragment : Fragment() {
 
     lateinit var binding: FragmentDetailArticleBinding
     val args by navArgs<DetailArticleFragmentArgs>()
+    val vm: DetailArticleViewModel by viewModels { DetailArticleViewModel.Factory }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,7 +32,29 @@ class DetailArticleFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //associe l'argument passé à la variable dans la vue
-        binding.article = args.article
+        val currentArticle = args.article
+        binding.article = currentArticle
+        binding.vm = vm
+        //permet automatiquement de mettre à jour la vue en cas de changement
+        //uniquement dans les fragments équivalent à vm.fav.observe(){ binding.vm = vm }
+        binding.lifecycleOwner = this
+
+        vm.initCurrentArticle(currentArticle)
+
+        binding.checkBox.setOnClickListener {
+            if (binding.checkBox.isChecked) {
+                Log.i("SAVE", "save")
+                vm.addArticleToFav(currentArticle).observe(viewLifecycleOwner) {
+                    Toast.makeText(
+                        view.context,
+                        "L'article a bien ajouté à vos favoris !",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            } else {
+                vm.deleteArticleFav(currentArticle)
+            }
+        }
 
         binding.tvArticleTitle.setOnClickListener {
             val article = binding.article

@@ -1,12 +1,17 @@
 package com.example.enishop.bo
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverter
 import kotlinx.parcelize.Parcelize
 import java.util.Date
 
 
 @Parcelize
+@Entity
 data class Article(
+    @PrimaryKey(autoGenerate = false)
     var id : Long = 0,
     var title : String ="",
     var description : String ="",

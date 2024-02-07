@@ -10,6 +10,9 @@
         <variable
             name="article"
             type="com.example.enishop.bo.Article" />
+        <variable
+            name="vm"
+            type="com.example.enishop.ui.articledetail.DetailArticleViewModel" />
     </data>
 
 
@@ -74,6 +77,17 @@
                 app:layout_constraintStart_toEndOf="@+id/tvArticlePrice"
                 app:layout_constraintTop_toBottomOf="@+id/imageView"
                 app:layout_constraintVertical_bias="0.5" />
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Favoris ?"
+                android:checked="@{vm.fav}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvArticleDate" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

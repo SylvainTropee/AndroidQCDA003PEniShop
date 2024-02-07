@@ -57,4 +57,8 @@ class ArticleDaoMemoryImpl : ArticleDAO {
     override fun selectAll(): List<Article> {
         return articlesInMemory
     }
+
+    override fun delete(article: Article) {
+        TODO("Not yet implemented")
+    }
 }
