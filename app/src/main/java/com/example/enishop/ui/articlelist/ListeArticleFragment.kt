@@ -6,16 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.enishop.databinding.FragmentListeArticleBinding
-import com.example.enishop.repository.ArticleRepository
 
 
 class ListeArticleFragment : Fragment() {
 
     lateinit var binding: FragmentListeArticleBinding
-    lateinit var vm: ListArticleViewModel
+    val vm: ListArticleViewModel by viewModels { ListArticleViewModel.Factory }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +29,7 @@ class ListeArticleFragment : Fragment() {
 //        )
         binding = FragmentListeArticleBinding.inflate(layoutInflater)
         //vm = ViewModelProvider(requireActivity())[ListArticleViewModel::class.java]
-        vm = ViewModelProvider(this)[ListArticleViewModel::class.java]
+        //vm = ViewModelProvider(this)[ListArticleViewModel::class.java]
         return binding.root
     }
 
@@ -38,13 +37,10 @@ class ListeArticleFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        var content = ""
-//        articles.forEach {article ->
-//            content += "${article.title}\n"
-//        }
-//        binding.tvArticles.text = content
+        vm.getArticleList()
 
-        vm.getArticleList().observe(viewLifecycleOwner) { articles ->
+        vm.articles.observe(viewLifecycleOwner) { articles ->
+            binding.lytArticleList.removeAllViews()
             articles.forEach {
                 //création d'une instance de textview
                 val tv = TextView(context)
@@ -53,6 +49,10 @@ class ListeArticleFragment : Fragment() {
                 //j'ajoute l'instance dans le layout à utiliser
                 binding.lytArticleList.addView(tv)
             }
+        }
+
+        binding.btnFav.setOnClickListener {
+            vm.getArticlesFav()
         }
 
         binding.buttonToDetail.setOnClickListener {

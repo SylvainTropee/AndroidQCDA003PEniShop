@@ -43,7 +43,6 @@ class DetailArticleFragment : Fragment() {
 
         binding.checkBox.setOnClickListener {
             if (binding.checkBox.isChecked) {
-                Log.i("SAVE", "save")
                 vm.addArticleToFav(currentArticle).observe(viewLifecycleOwner) {
                     Toast.makeText(
                         view.context,

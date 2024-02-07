@@ -29,10 +29,10 @@ class DetailArticleViewModel(private val articleDAO: ArticleDAO) : ViewModel() {
         }
     }
 
-    fun initCurrentArticle(article: Article){
+    fun initCurrentArticle(article: Article) {
         viewModelScope.launch(Dispatchers.IO) {
-          val articleFav = articleDAO.selectById(article.id)
-            if(articleFav != null){
+            val articleFav = articleDAO.selectById(article.id)
+            if (articleFav != null) {
                 fav.postValue(true)
             }
         }
