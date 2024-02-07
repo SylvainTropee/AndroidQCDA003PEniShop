@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.enishop.databinding.FragmentListeArticleBinding
 
 
@@ -38,30 +39,20 @@ class ListeArticleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         vm.getArticleList()
-
         vm.articles.observe(viewLifecycleOwner) { articles ->
-            binding.lytArticleList.removeAllViews()
-            articles.forEach {
-                //création d'une instance de textview
-                val tv = TextView(context)
-                tv.text = it.title
 
-                //j'ajoute l'instance dans le layout à utiliser
-                binding.lytArticleList.addView(tv)
+            val adapter = ArticleAdapter(articles){
+                val direction =
+                    ListeArticleFragmentDirections.actionListToDetailArticle(it)
+                Navigation.findNavController(view).navigate(direction)
             }
+
+            binding.recycler.adapter = adapter
+            binding.recycler.layoutManager = LinearLayoutManager(context)
         }
 
         binding.btnFav.setOnClickListener {
             vm.getArticlesFav()
         }
-
-        binding.buttonToDetail.setOnClickListener {
-            val direction =
-                ListeArticleFragmentDirections.actionListToDetailArticle(vm.getRandomArticle())
-            Navigation.findNavController(view).navigate(direction)
-        }
-
     }
-
-
 }
