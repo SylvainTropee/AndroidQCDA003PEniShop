@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.enishop.databinding.FragmentDetailArticleBinding
+import com.squareup.picasso.Picasso
 
 
 class DetailArticleFragment : Fragment() {
@@ -35,10 +36,13 @@ class DetailArticleFragment : Fragment() {
         val currentArticle = args.article
         binding.article = currentArticle
         binding.vm = vm
+
+        //affiche une image de manière asynchrone
+        Picasso.get().load(currentArticle.urlPicture).into(binding.imageView)
+
         //permet automatiquement de mettre à jour la vue en cas de changement
         //uniquement dans les fragments équivalent à vm.fav.observe(){ binding.vm = vm }
         binding.lifecycleOwner = this
-
         vm.initCurrentArticle(currentArticle)
 
         binding.checkBox.setOnClickListener {
